@@ -1,0 +1,1 @@
+This project creates a database of users, events, contacts, and gifts, sending users reminders about events such as birthdays anniversaries. The user can create a card by choosing an image, message, and template from the database.
