@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include partials/pageopen.ejs %>
+
+
+<h1>Welcome!</h1>
+<% if (user) { %>
+<h2>Logged in</h2>
+<% } else { %>
+<h2>Logged out</h2>
+<% } %>
+
+
+<% include partials/pageclose.ejs %>
