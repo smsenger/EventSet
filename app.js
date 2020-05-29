@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const db = require('./models');
-const session = require('express-session')
+const session = require('express-session');
 
 // establish routes below
 const indexRouter = require('./routes/index');
@@ -14,7 +14,7 @@ const contactsRouter = require('./routes/contact');
 
 
 const app = express();
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 const bcrypt = require('bcrypt');
 const fs = require('fs');
 const hash = process.argv[2];

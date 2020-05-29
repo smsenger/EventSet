@@ -11,6 +11,10 @@ var router = express.Router();
 const db = require('../models');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const methodOverride = require('method-override');
+
+
+router.use(methodOverride('_method'));
 
 
 
