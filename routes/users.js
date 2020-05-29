@@ -15,7 +15,9 @@ function checkAuthentication(req, res, next) {
 
 
 router.get('/', (req, res) => {
-  res.render('users.ejs');
+    res.render('users', {
+      title: 'Users | Home',
+    });
 })
 
 router.post('/register', (req, res) => {

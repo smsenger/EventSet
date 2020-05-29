@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE
   }, {});
   Event.associate = function(models) {
-    Event.belongsTo(models.Contact, {foreignKey: 'Id'});
+    Event.belongsTo(models.Contact, {foreignKey: 'Contact_Id'});
   };
   return Event;
 };

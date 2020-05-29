@@ -1,1 +1,75 @@
 <!-- form w/route, table with route -->
+
+<% include partials/pageopen.ejs %>
+<div class="card text-center">
+    <div class="card-header">
+      Welcome to your Contacts Page!
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">You have no Contacts</h5>
+      <p class="card-text">Click below to add a contact.</p>
+      <a href="#" class="btn btn-primary">Add</a>
+    </div>
+    <div class="card-footer text-muted">
+      Your contact list was updated 2 days ago
+    </div>
+  </div>
+<form action='/contact/register' method='post'>
+    <div class="">
+        <h2>Register</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+    </div>
+    <div class="">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" />
+    </div>
+    <div class="">
+        <label for="phone">Phone Number</label>
+        <input type="phone" id="phone" name="phone" />
+    </div>
+    <div class="">
+        <label for="address">Address</label>
+        <input type="address" id="address" name="address" />
+    </div>
+    <div class="">
+        <button type="submit">Add Contact</button>
+    </div>
+</form>
+
+        <% results.forEach((entry) => { %>
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><input class="update-contact-name" value="<%= entry.name %>"></input><span><a href="">Edit</a></span></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= entry.email %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= entry.phone %></h6>
+          <h6 class="card-subtitle mb-2 text-muted"><%= entry.address %></h6>
+          <p class="card-text">This contact does not have any </p>
+          <a href="/" class="card-link">Home</a>
+          <a href="/contact/registration" class="card-link">Add Contact</a>
+        </div>
+      </div>
+      <form id="update-form" action='/contact/update' method='put'>
+        <div class="">
+            <label for="name"></label>
+            <input type="text" id="name" name="name" value="<%= entry.name %>"required />
+        </div>
+        <div class="">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" />
+        </div>
+        <div class="">
+            <label for="phone">Phone Number</label>
+            <input type="phone" id="phone" name="phone" />
+        </div>
+        <div class="">
+            <label for="address">Address</label>
+            <input type="address" id="address" name="address" />
+        </div>
+        <div class="">
+            <button type="submit">Add Contact</button>
+        </div>
+    </form>
+        
+       <% }) %>
+<% include partials/pageclose.ejs %>
