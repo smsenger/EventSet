@@ -3,69 +3,136 @@
 <% include partials/pageopen.ejs %>
 <div class="card text-center">
     <div class="card-header">
-      Welcome to your Contacts Page!
+        <div>
+            <h4 class="home" action="/users/logout">Log Out</h4>
+        </div>
+        <div class="welcome">
+            <h2>Welcome to your Contacts Page!</h2>
+        </div>
+        <div>
+            <h4 class="home"><a href="index.ejs">Home</a></h4>
+        </div>
     </div>
     <div class="card-body">
-      <h5 class="card-title">You have no Contacts</h5>
-      <p class="card-text">Click below to add a contact.</p>
-      <a href="#" class="btn btn-primary">Add</a>
+        <h5 class="card-title">You have no Contacts</h5>
+        <!-- <p class="card-text">Click below to add a contact.</p> -->
+
+        <button type="button" class="btn btn-lg btn-primary toggle" data-toggle="popover" title="Add Contact" html='true' data-content=
+        "<div class='card' style='width: 18rem;'>
+            <div class='card-body'>
+                <form action='/contact/register' method='post'>
+                    <label for='name'>Name</label>
+                    <h5 class='card-title'><input class='add-contact-name' type='text' id='name' name='name' /></h5>
+
+                    <label for='email'>Email</label>
+                    <h6 class='card-subtitle mb-2 text-muted'><input class='add-contact-email' type='email' id='email'
+                            name='email' /></h6>
+
+                    <label for='phone'>Phone Number</label>
+                    <h6 class='card-subtitle mb-2 text-muted'><input class='add-contact-phone' type='phone' id='phone'
+                            name='phone' /></h6>
+
+                    <label for='address'>Address</label>
+                    <h6 class='card-subtitle mb-2 text-muted'><input class='add-contact-address' type='address'
+                            id='address' name='address' /></h6>
+
+                    <button type='submit'>Add Contact</button>
+                </form>
+            </div>
+        </div>">Click here to add a contact.</button>
     </div>
     <div class="card-footer text-muted">
-      Your contact list was updated 2 days ago
+        Your contact list was updated 2 days ago
+        <!-- use template to fill this in -->
     </div>
-  </div>
+</div>
+
+
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
 <form action='/contact/register' method='post'>
-    <div class="">
-        <h2>Register</h2>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
-    </div>
-    <div class="">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" />
-    </div>
-    <div class="">
-        <label for="phone">Phone Number</label>
-        <input type="phone" id="phone" name="phone" />
-    </div>
-    <div class="">
-        <label for="address">Address</label>
-        <input type="address" id="address" name="address" />
-    </div>
-    <div class="">
-        <button type="submit">Add Contact</button>
-    </div>
+    <label for="name">Name</label>
+    <h5 class="card-title"><input class="add-contact-name" type="text" id="name" name="name"/></h5>
+
+    <label for="email">Email</label>
+    <h6 class="card-subtitle mb-2 text-muted"><input class="add-contact-email" type="email" id="email" name="email"/></h6>
+
+    <label for="phone">Phone Number</label>
+    <h6 class="card-subtitle mb-2 text-muted"><input class="add-contact-phone" type="phone" id="phone" name="phone"/></h6>
+   
+    <label for="address">Address</label>
+    <h6 class="card-subtitle mb-2 text-muted"><input class="add-contact-address" type="address" id="address"
+        name="address"/></h6>
+<div class="">
+    <button type="submit">Add Contact</button>
+</div>
 </form>
-
-        <% results.forEach((entry) => { %>
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><input class="update-contact-name" value="<%= entry.name %>"></input><span><a href="">Edit</a></span></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= entry.email %></h6>
-          <h6 class="card-subtitle mb-2 text-muted"><%= entry.phone %></h6>
-          <h6 class="card-subtitle mb-2 text-muted"><%= entry.address %></h6>
-          <p class="card-text">This contact does not have any </p>
-          <a href="/" class="card-link">Home</a>
-          <a href="/contact/registration" class="card-link">Add Contact</a>
-        </div>
-      </div>
-        <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <form>
-
-                <h5 class="card-title"><input class="update-contact-name" type="text" id="name" name="name" value="<%= entry.name %>" /></h5>
-                <h6 class="card-subtitle mb-2 text-muted" ><input class="update-contact-email" type="email" id="email" name="email" value="<%= entry.email %>" /></h6>
-                <h6 class="card-subtitle mb-2 text-muted"><input class="update-contact-phone" type="phone" id="phone" name="phone" value="<%= entry.phone %>" /></h6>
-                <h6 class="card-subtitle mb-2 text-muted"><input class="update-contact-address" type="address" id="address" name="address" value="<%= entry.address %>" /></h6>
-                <p class="card-text">This contact does not have any </p>
-                <a href="/" class="card-link">Home</a>
-                <div class="">
-                    <button type="submit">Update Contact</button>
+</div>
+</div> -->
+<!-- <div class="">
+                    <h2>Register</h2>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required />
                 </div>
-            </form>
+                <div class="">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" />
+                </div>
+                <div class="">
+                    <label for="phone">Phone Number</label>
+                    <input type="phone" id="phone" name="phone" />
+                </div>
+                <div class="">
+                    <label for="address">Address</label>
+                    <input type="address" id="address" name="address" />
+                </div>
+                <div class="">
+                    <button type="submit">Add Contact</button>
+                </div> -->
+
+<% results.forEach((entry) => { %>
+
+    <div class="row d-flex position-row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= entry.name %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= entry.email %></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= entry.phone %></h6>
+                <h6 class="card-subtitle mb-2 text-muted"><%= entry.address %></h6>
+                <p class="card-text">This contact has no associated events.</p>
+                <!-- forEach: put each event in an unordered list -->
+                <!-- <a href="/" class="card-link">Home</a> -->
+                <a href="/contact/registration" class="card-link">Add Contact</a>
+            </div>
         </div>
-      </div>
-      
-        
-       <% }) %>
+    </div>
+
+
+
+    <div class="row d-flex position-row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <form action="/update/?form=true&_method=put" method="POST" id="edit">
+                    <h5 class="card-title"><input class="update-contact-name" type="text" id="name" name="name"
+                            value="<%= entry.name %>" /></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><input class="update-contact-email" type="email"
+                            id="email" name="email" value="<%= entry.email %>" /></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><input class="update-contact-phone" type="phone"
+                            id="phone" name="phone" value="<%= entry.phone %>" /></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><input class="update-contact-address" type="address"
+                            id="address" name="address" value="<%= entry.address %>" /></h6>
+                    <p class="card-text">This contact has no associated events.</p>
+                    <!-- forEach: put each event in an unordered list -->
+                    <!-- <a href="/" class="card-link">Home</a> -->
+                    <div class="">
+                        <button type="submit" class="btn-link">Update Contact</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+<% }) %>
 <% include partials/pageclose.ejs %>

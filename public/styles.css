@@ -1,0 +1,68 @@
+.first-link {
+    margin-left: 20px;
+    margin-right: 30px;
+    text-decoration: underline;
+}
+
+.first-link:hover {
+    color: #17a3bf;
+}
+
+.second-link {
+    text-decoration: underline;
+}
+
+.second-link:hover {
+    color: #17a3bf;
+}
+
+.gradient {
+    background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.4458158263305322) 0%, rgba(9,84,121,0.5886729691876751) 35%, rgba(23,163,191,0.3617822128851541) 100%);
+}
+
+.h1 {
+    color: black;
+}
+
+p, 
+ul {
+    color: black;
+}
+
+.card1 {
+    margin-right: 20px;
+}
+
+/* .button-top {
+    color: white;
+    border: 2px solid white;
+    opacity: .7;
+    padding: 20px;
+} */
+
+.card-header {
+    display: flex;
+    justify-content: center;
+}
+
+.welcome {
+    margin-left: 550px;
+}
+
+.home {
+    margin-left: 400px;
+    margin-top: 10px;
+}
+
+a, 
+.btn-link {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -48,7 +48,7 @@ router.post('/login', (req, res) => {
       })
   })
   .catch(() => {
-      res.send('username not found')
+      res.send('Username not found. Please return to previous page and try again.')
   });
 });
 
