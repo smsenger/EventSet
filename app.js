@@ -5,12 +5,16 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const db = require('./models');
-const session = require('express-session')
+const session = require('express-session');
 
-// const indexRouter = require('./routes/index');
+// establish routes below
+const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const contactsRouter = require('./routes/contact');
+
+
 const app = express();
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 const bcrypt = require('bcrypt');
 const fs = require('fs');
 const hash = process.argv[2];
@@ -40,11 +44,14 @@ app.use(session( {
   },
 }));
 
-// app.use('/', indexRouter);
+// link routes to app
 app.use('/users', usersRouter);
-app.use(checkAuthentication);
+app.use(checkAuthentication); 
+app.use(indexRouter);
 // app.use('/route') use this to run checkAuthentication for every route
 //below above checkAuthentication function call
+app.use('/contact', contactsRouter);
+
 
 function checkAuthentication(req, res, next) {
   if (req.session.user) {
@@ -54,15 +61,6 @@ function checkAuthentication(req, res, next) {
       //format here = res.render('/pagefilename.ejs')
   };
 };
-
-app.get('/', checkAuthentication, (req, res) => {
-  res.render('index', {
-    title: 'EventSet',
-    user: req.session.user,
-  });
-});
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
