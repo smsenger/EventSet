@@ -1,37 +1,97 @@
 <% include partials/pageopen.ejs %>
-<section>
-    <form action='/users/register' method='post'>
-        <div class="">
-            <h2>Register</h2>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required />
-        </div>
-        <div class="">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-        </div>
-        <div class="">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
-        </div>
-        <div class="">
-            <button type="submit">Register</button>
-        </div>
-    </form>
 
-    <form action='/users/login' method='post'>
-        <div class="">
-            <h2>Login</h2>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required />
+<div class="jumbotron gradient" style="height: 100vh; border-radius: 0em;">
+    <h1 class="display-4 h1">Welcome to EventSet!</h1>
+
+    <p><i>Where your events are all set.</i></p>
+
+    <div class="row d-flex position-row">
+        <div class="card card1" style="width: 18rem;">
+            <div class="card-body">
+                <form action='/users/register' method='post'>
+                    <h2>Register</h2>
+                    <div>
+                        <h6>Username</h6>
+                        <h6 class="card-title"><input class="user-name" type="text" id="name" name="name"/></h6>
+                    </div>
+                    <div>
+                        <h6>Email</h6>
+                        <h6 class="card-subtitle mb-2 text-muted"><input class="user-email" type="email" id="email" name="email"/></h6>
+                    </div>
+                    <div>
+                        <h6>Password</h6>
+                        <h6 class="card-subtitle mb-2 text-muted"><input class="user-password" type="text" id="password" name="password"/></h6>
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
         </div>
-        <div class="">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <form action='/users/login' method='post'>
+                    <h2>Login</h2>
+                    <div>
+                        <h6>Username</h6>
+                        <h6 class="card-title"><input class="user-name" type="text" id="name" name="name"/></h6>
+                    </div>
+                    <div>
+                        <h6>Password</h6>
+                        <h6 class="card-subtitle mb-2 text-muted"><input class="user-password" type="text" id="password" name="password"/></h6>
+                    </div>
+                    <button type="submit">Sign in</button>
+                </form>
+            </div>
         </div>
-        <div class="">
-            <button type="submit">Sign in</button>
-        </div>
-    </form>
-</section>
+    </div>
+
+
+
+
+
+    <!-- <section>
+        <form action='/users/register' method='post'>
+            <div class="">
+                <h2>Register</h2>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div class="">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div class="">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    
+        <form action='/users/login' method='post'>
+            <div class="">
+                <h2>Login</h2>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div class="">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div class="">
+                <button type="submit">Sign in</button>
+            </div>
+        </form>
+    </section> -->
+
+
+
+
+    <hr class="my-4" id="jumbo-line">
+</div>
+
+
+
+
 <% include partials/pageclose.ejs %>

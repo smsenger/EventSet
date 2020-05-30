@@ -1,0 +1,42 @@
+<% include partials/pageopen.ejs %>
+    <div class="jumbotron gradient" style="height: 100vh; border-radius: 0em;">
+        <h1 class="display-4 h1">EventSet Events</h1>
+        <p>Add and edit events here.</p>
+        <hr class="my-4" id="jumbo-line">
+        <a class="btn btn-outline-secondary button-top" action="/users/logout" role="button">Log Out</a>
+        
+        
+        <% results.forEach((entry) => { %>
+            <div class="row d-flex position-row">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= entry.type %></h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= entry.date %></h6>
+                        <a href="/contact/registration" class="card-link">Update Event</a>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="row d-flex position-row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <form action="/update/?form=true&_method=put" method="POST" id="edit">
+                    <h5 class="card-title"><input class="event-type" type="text" id="type" name="type"
+                        value="<%= entry.type %>" /></h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><input class="update-event" type="date"
+                            id="date" name="date" value="<%= entry.date %>" /></h6>
+                            <div class="">
+                                <button type="submit" class="btn-link">Update Event</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+
+
+<% }) %>
+<% include partials/pageclose.ejs %>
