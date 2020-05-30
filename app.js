@@ -11,6 +11,7 @@ const session = require('express-session');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const contactsRouter = require('./routes/contact');
+const eventsRouter = require('./routes/event');
 
 
 const app = express();
@@ -51,6 +52,7 @@ app.use(indexRouter);
 // app.use('/route') use this to run checkAuthentication for every route
 //below above checkAuthentication function call
 app.use('/contact', contactsRouter);
+app.use('/event', eventsRouter);
 
 
 function checkAuthentication(req, res, next) {
