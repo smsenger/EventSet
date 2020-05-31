@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Event = sequelize.define('Event', {
     type: DataTypes.STRING,
-    date: DataTypes.DATE
+    date: DataTypes.DATE,
   }, {});
   Event.associate = function(models) {
     Event.belongsTo(models.Contact, {foreignKey: 'Contact_Id'});

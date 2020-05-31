@@ -11,7 +11,7 @@ router.use(methodOverride('_method'));
 
 
 router.get('/', (req, res) => {
-    db.Event.findAll().then((results) => {
+    db.Event_Final.findAll().then((results) => {
         res.render('event', {
             title: 'Events',
             results: results,
@@ -20,10 +20,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    const { type, date } = req.body;
-    db.Event.create({
+    const { type, date, time } = req.body;
+    db.Event_Final.create({
         type,
         date,
+        time,
     }).then((result) => {
         console.log(result);
         res.redirect('/event');
@@ -31,10 +32,11 @@ router.post('/create', (req, res) => {
 });
 
 router.put('/update', (req, res) => {
-    const { type, date } = req.body;
-    db.Contact.update({
+    const { type, date, time } = req.body;
+    db.Event_Final.update({
         type, 
         date,
+        time,
     }).then((result) => {
         res.redirect('/event');
     });

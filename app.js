@@ -12,7 +12,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const contactsRouter = require('./routes/contact');
 const eventsRouter = require('./routes/event');
-
+const event_final_Router = require('./routes/event_final');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -53,6 +53,8 @@ app.use(indexRouter);
 //below above checkAuthentication function call
 app.use('/contact', contactsRouter);
 app.use('/event', eventsRouter);
+app.use('/event_final', event_final_Router);
+
 
 
 function checkAuthentication(req, res, next) {
