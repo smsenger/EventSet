@@ -66,3 +66,8 @@ a,
     text-decoration: none;
     cursor: pointer;
 }
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+}
