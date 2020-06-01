@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const db = require('./models');
 const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // establish routes below
 const indexRouter = require('./routes/index');
@@ -34,6 +35,8 @@ app.use(bodyParser.urlencoded ({extended: false}));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+const store = new SequelizeStore({ db: db.sequelize })
+
 app.use(session( {
   secret: 'secret',
   resave: false,
@@ -42,7 +45,10 @@ app.use(session( {
       // secure: true,
       maxAge: 86400000,
   },
+  store: store,
 }));
+
+store.sync();
 
 // link routes to app
 app.use('/users', usersRouter);
