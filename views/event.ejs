@@ -27,7 +27,7 @@
     <div class="Container">
         <div class="row d-flex justify-content-around position-row">
             <% results.forEach((entry) => { %>
-            <div class="card" style="width: 18rem;">
+            <div class="card card-bottom" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title"><%= entry.type %></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><%= entry.dateFormatted %></h6>
@@ -40,7 +40,7 @@
     </div>
     
     <div class="Container">
-        <div class="row d-flex justify-content-around position-row">
+        <div class="row d-flex position-row card-row">
             <% results.forEach((entry) => { %>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">

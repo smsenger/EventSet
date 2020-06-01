@@ -32,6 +32,30 @@ ul {
 
 .card1 {
     margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.card-bottom {
+    margin-bottom: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: center;
+}
+
+.card-row1 {
+    justify-content: left;
+    margin-bottom: 10px;
+}
+
+.card-row {
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.welcome {
+    margin-left: 550px;
 }
 
 /* .button-top {
@@ -40,15 +64,6 @@ ul {
     opacity: .7;
     padding: 20px;
 } */
-
-.card-header {
-    display: flex;
-    justify-content: center;
-}
-
-.welcome {
-    margin-left: 550px;
-}
 
 .home {
     margin-left: 400px;
@@ -67,8 +82,16 @@ a,
     cursor: pointer;
 }
 
-.card-row {
+#card-form1, 
+#card-form2 {
+    display:none;
+}
+
+.hidden {
+    display: none;
+}
+
+.columns {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 }
