@@ -81,15 +81,14 @@ router.post('/register', (req, res) => {
 // });
 
 
-router.put('/update', (req,res) => {    //this will update everything except name. unable to access contact_id/id
-    
+router.put('/update/:id', (req,res) => {    //this will update everything except name. unable to access contact_id/id
     db.Contact.update({
-        name: req.name,
+        name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
         address: req.body.address,
 
-    }, { where: {name: req.body.name}}, 
+    }, { where: {id: req.params.id}}, 
     ).then((result) => {
         console.log(result)
         res.redirect('/contact');

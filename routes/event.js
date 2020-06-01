@@ -11,7 +11,7 @@ router.use(methodOverride('_method'));
 
 
 router.get('/', (req, res) => {
-    db.Event.findAll().then((results) => {
+    db.Event.findAll({order: [['date', 'ASC']]}).then((results) => {
         res.render('event', {
             title: 'Events',
             results: results,
@@ -20,21 +20,25 @@ router.get('/', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-    const { type, date } = req.body;
+    const { type, date, time } = req.body;
+    const datetime = date + ' ' + time;
     db.Event.create({
         type,
-        date,
+        date: datetime,
     }).then((result) => {
         console.log(result);
         res.redirect('/event');
     });
 });
 
-router.put('/update', (req, res) => {
-    const { type, date } = req.body;
-    db.Contact.update({
+router.put('/update/:id', (req, res) => {
+    const { type, date, time } = req.body;
+    const datetime = date + ' ' + time;
+    db.Event.update({
         type, 
-        date,
+        date: datetime,
+    }, {
+        where: {id: req.params.id}
     }).then((result) => {
         res.redirect('/event');
     });

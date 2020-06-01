@@ -35,9 +35,9 @@
 
 
 
-    <% results.forEach((entry) => { %>
-        <div class="Container">
-            <div class="row d-flex position-row card-row">
+    <div class="Container">
+        <div class="row d-flex position-row card-row">
+            <% results.forEach((entry) => { %>
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title"><%= entry.name %></h5>
@@ -50,16 +50,16 @@
                         <a href="/contact/registration" class="card-link">Update Contact</a>
                     </div>
                 </div>
+                <% }) %>
             </div>
         </div>
-    <% }) %>
 
-    <% results.forEach((entry) => { %>
-        <div class="Container">
-            <div class="row d-flex position-row card-row">
+    <div class="Container">
+        <div class="row d-flex position-row card-row">
+            <% results.forEach((entry) => { %>
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <form action="contact/update/?form=true&_method=put" method="POST" id="edit">
+                        <form action="contact/update/<%= entry.id %>?form=true&_method=put" method="POST" id="edit">
                             <h5 class="card-title"><input class="update-contact-name" type="text" id="name" name="name"
                                     value="<%= entry.name %>" /></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><input class="update-contact-email" type="email"
@@ -77,12 +77,12 @@
                         </form>
                     </div>
                 </div>
+                <% }) %>
             </div>
         </div>
 
 
 
-    <% }) %>
 </div>
 <% include partials/pageclose.ejs %>
 <!-- <div class="card" style="width: 18rem;">

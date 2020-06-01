@@ -3,12 +3,12 @@
     <h1 class="display-4 h1">EventSet Events</h1>
     <p>Add and edit events here.</p>
     <hr class="my-4" id="jumbo-line">
-    <a class="btn btn-outline-secondary button-top" action="/users/logout" role="button">Log Out</a>
+    <!-- <a class="btn btn-outline-secondary button-top" action="/users/logout" role="button">Log Out</a> -->
 
     <div class="row d-flex position-row">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <form action="/event_final/create" method="POST">
+                <form action="/event/create" method="POST">
                     <h5 class="card-title"><input class="event-type" type="text" id="type" name="type" /></h5>
                     <h5><input class="event-date" type="text" id="date" name="date" placeholder="YYYY-MM-DD" required />
                     </h5>
@@ -24,44 +24,41 @@
         </div>
     </div>
 
-    <% results.forEach((entry) => { %>
     <div class="Container">
         <div class="row d-flex justify-content-around position-row">
+            <% results.forEach((entry) => { %>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title"><%= entry.type %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= entry.date %></h6>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= entry.time %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= entry.dateFormatted %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= entry.timeFormatted %></h6>
                     <a href="/contact/registration" class="card-link">Update Event</a>
                 </div>
             </div>
+            <% }) %>
         </div>
     </div>
-    <% }) %>
     
-        <% results.forEach((entry) => { %>
     <div class="Container">
         <div class="row d-flex justify-content-around position-row">
+            <% results.forEach((entry) => { %>
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <form action="/update/?form=true&_method=put" method="POST" id="edit">
+                    <form action="/event/update/<%=entry.id%>?form=true&_method=put" method="POST" id="edit">
                         <h5 class="card-title"><input class="event-type" type="text" id="type" name="type"
                                 value="<%= entry.type %>" /></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><input class="update-event" type="date" id="date"
-                                name="date" value="<%= entry.date %>" /></h6>
+                                name="date" value="<%= entry.dateFormatted %>" /></h6>
                         <h6 class="card-subtitle mb-2 text-muted"><input class="update-event" type="time" id="time"
-                                name="time" value="<%= entry.time %>" /></h6>
+                                name="time" value="<%= entry.timeFieldValue %>" /></h6>
                         <div class="">
                             <button type="submit" class="btn-link">Update Event</button>
                         </div>
                     </form>
                 </div>
             </div>
+            <% }) %>
         </div>
     </div>
-
-</div>
-
-<% }) %>
 </div>
 <% include partials/pageclose.ejs %>
