@@ -15,19 +15,28 @@ router.use(methodOverride('_method'));
 // });
 
 router.get('/', (req, res) => {
-  console.log(req.session);
-  console.log(req.body)
   db.User.findOne().then((results) => {
-      res.render('index', {
-          title: 'EventSet',
-          results: results,
-          user: req.session.user,
-          username: req.body.username,
-          email: req.body.email,
-
-      });
+    res.render('index', {
+      title: 'EventSet',
+      results: results,
+      user: req.session.user,
+      username: req.body.username,
+      email: req.body.email,
+    });
   })
 });
+
+router.get('/', (req, res) => {
+  const { type, date, time } = req.body;
+  const datetime = date + ' ' + time;
+  db.Event.findOne().then((results) => {
+    res.render('index'), {
+      results: results,
+      type,
+      date: datetime,
+    }
+  })
+})
 
 router.put('/update/:id', (req,res) => {    //this will update everything except name. unable to access contact_id/id
   req.session.user.username = req.body.username;

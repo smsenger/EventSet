@@ -12,6 +12,14 @@
                 <h5 class="card-title"><input class="event-type" type="text" id="type" name="type" /></h5>
                 <h5><input class="event-date" type="text" id="date" name="date" placeholder="YYYY-MM-DD" required />
                 </h5>
+                <h5><select class="event-date" id="contact" name="contact">
+                    <option disabled selected value="">Choose a contact</option>
+                    <option value="">None</option>
+                    <% contacts.forEach((contact, index) => { %>  
+                        <option value="<%= contact.id %>"><%= contact.name %></option>
+                        <% }) %>
+                </select>
+                </h5>
                 <h5 class="card-title"><input class="event-time" type="time" id="time" name="time" /></h5>
                 
                 <!-- <h6 class="card-subtitle mb-2 text-muted"><input class="create-event" type="date" value="2017-06-01"
@@ -31,15 +39,18 @@
             <div class="card card-bottom" id="event-card<%=index%>" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title"><%= entry.type %></h5>
+                    <% if (entry.Contact) {%>
+                        <h5 class="card-title"><%= entry.Contact.name %></h5>
+                    <%}%>
                     <h6 class="card-subtitle mb-2 text-muted"><%= entry.dateFormatted %></h6>
                     <h6 class="card-subtitle mb-2 text-muted"><%= entry.timeFormatted %></h6>
-                    <a onClick="showEvent(<%=index%>)" class="card-link" id="event-button3">Update Event</a>
-                    <form action="event/delete/<%= entry.id %>?_method=delete" method="POST"><button type="submit">Delete Event</button> </form>
+                    <button type="submit" onClick="showEvent(<%= index %>)" class="card-link btn btn-link" id="event-button3">Update Event</a>
+                    <form action="event/delete/<%= entry.id %>?_method=delete" method="POST"><button type="submit" class="btn btn-link ml-3">Delete Event</button> </form>
                 </div>
             </div>
-            <div class="card hidden card-row" id="event-form<%=index%>" style="width: 18rem;">
+            <div class="card hidden card-row" id="event-form<%= index %>" style="width: 18rem;">
                 <div class="card-body">
-                    <form action="/event/update/<%=entry.id%>?form=true&_method=put" method="POST" id="edit">
+                    <form action="/event/update/<%= entry.id %>?form=true&_method=put" method="POST" id="edit">
                         <h5 class="card-title"><input class="event-type" type="text" id="type" name="type"
                                 value="<%= entry.type %>" /></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><input class="update-event" type="date" id="date"
@@ -47,7 +58,7 @@
                         <h6 class="card-subtitle mb-2 text-muted"><input class="update-event" type="time" id="time"
                                 name="time" value="<%= entry.timeFieldValue %>" /></h6>
                         <div class="">
-                            <button type="submit" class="btn-link">Update Event</button>
+                            <button type="submit" class="btn-link btn btn-link>Update Event</button>
                         </div>
                     </form>
                 </div>

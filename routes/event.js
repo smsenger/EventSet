@@ -11,19 +11,51 @@ router.use(methodOverride('_method'));
 
 
 router.get('/', (req, res) => {
-    db.Event.findAll({order: [['date', 'ASC']]}).then((results) => {
+    db.User.findByPk(req.session.user.id, {
+        include: [
+            {
+                model: db.Event,
+                order: [
+                    [
+                        'date',
+                        'ASC',
+                    ]
+                ],
+                include: [
+                    {
+                        model: db.Contact,
+                    }
+                ]
+            },
+            {
+                model: db.Contact,
+                order: [
+                    [
+                        'name',
+                        'ASC',
+                    ]
+                ],
+            }
+        ]
+    }).then((user) => {
+        console.log(user.Events)
         res.render('event', {
             title: 'Events',
-            results: results,
+            user: user,
+            contacts: user.Contacts,
+            results: user.Events,
         });
-    })
-});
+    });
+})
+
 
 router.post('/create', (req, res) => {
-    const { type, date, time } = req.body;
+    const { type, date, time, contact } = req.body;
     const datetime = date + ' ' + time;
     db.Event.create({
         type,
+        Contact_Id: contact || null,
+        User_Id: req.session.user.id,
         date: datetime,
     }).then((result) => {
         console.log(result);
@@ -32,21 +64,23 @@ router.post('/create', (req, res) => {
 });
 
 router.put('/update/:id', (req, res) => {
-    const { type, date, time } = req.body;
+    const { type, date, time, contact } = req.body;
     const datetime = date + ' ' + time;
     db.Event.update({
-        type, 
+        type,
+        Contact_Id: contact || null,
+        User_Id: req.session.user.id,
         date: datetime,
     }, {
-        where: {id: req.params.id}
+        where: { id: req.params.id }
     }).then((result) => {
         res.redirect('/event');
     });
 });
 
 router.delete('/delete/:id', (req, res) => {
-    db.Event.destroy({ where : { id: req.params.id}})
-    .then((results) => {
+    db.Event.destroy({ where: { id: req.params.id } })
+        .then((results) => {
             res.redirect('/event');
         })
         .then(rowsDeleted => {
@@ -57,8 +91,8 @@ router.delete('/delete/:id', (req, res) => {
         .catch(err => {
             console.log(err);
         });
-        
-  });
+
+});
 
 
 module.exports = router;

@@ -10,7 +10,7 @@
 <p><a href="/contact">Contacts</a></p> -->
 
 <div class="jumbotron gradient" style="height: 600vh; border-radius: 0em;">
-    <h1 class="display-4 h1">Welcome to EventSet!</h1>
+    <h1 class="d-sm-display-5 d-md-display-4 h1">Welcome to EventSet!</h1>
     <% if (user) { %>
     <p class="lead">You are now logged in.</p>
     <% } else { %>
@@ -18,28 +18,28 @@
     <hr class="my-4" id="jumbo-line">
 
     <div class="Container">
-        <div class="row d-flex position-row card-row">
+        <div class="row d-flex position-row card-row justify-content-start justify-content-md-start justify-content-sm-around">
 
             <div class="card card-bottom" id="user-card"  style="width: 18rem;">
                 <div class="card-body">
-                    <h2>Account Information</h2>
+                    <h3 class="mb-3">Account Information</h3>
                     <h5 class="card-title"><%= user.username %></h5>
                     <h6 class="card-subtitle mb-2 text-muted"><%= user.email %></h6>
-                    <a onClick="showUser()" class="card-link">Update Account</a>
-                    <form action="/delete/<%= user.id %>?_method=delete" method="POST"><button type="submit">Delete Contact</button> </form>
+                    <button type="submit" onClick="showUser()" class="btn btn-link card-link">Update Account</a>
+                    <form action="/delete/<%= user.id %>?_method=delete" method="POST"><button type="submit" class="btn btn-link ml-3">Delete Account</button> </form>
                 </div>
             </div>
 
             <div class="card hidden card-row" id="user-form" style="width: 18rem;">
                 <div class="card-body">
-                    <h2>Update Account</h2>
+                    <h3 class="mb-3">Update Account</h3>
                     <form action="/update/<%= user.id %>?form=true&_method=put" method="POST" id="edit">
                         <h5 class="card-title"><input class="update-user-username" type="text" id="username" name="username"
                                 value="<%= user.username %>" /></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><input class="update-user-email" type="email"
                                 id="email" name="email" value="<%= user.email %>" /></h6>
                         <div class="">
-                            <button type="submit" class="btn-link">Update Account</button>
+                            <button type="submit" class="btn btn-link">Update Account</button>
                         </div>
                     </form>
                 </div>
@@ -47,6 +47,30 @@
 
         </div>
     </div>
+
+ 
+        <!-- <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Upcoming Event</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="Container">
+                            <div class="row d-flex justify-content-around position-row card-row">
+                                <div class="card card-bottom" id="event" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"></h5>
+                                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">time</h6> -->
+                                    </div>
+                                </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> -->
 </div>
 
 <% include partials/pageclose.ejs %>

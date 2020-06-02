@@ -39,8 +39,8 @@
                     <p class="card-text">This contact has no associated events.</p>
                     <!-- forEach: put each event in an unordered list -->
                     <!-- <a href="/" class="card-link">Home</a> -->
-                    <a onClick="showForm(<%= index %>)" class="card-link">Update Contact</a>
-                    <form action="/contact/delete/<%= entry.id %>?_method=delete" method="POST"><button type="submit">Delete Contact</button> </form>
+                    <button type="submit" onClick="showForm(<%= index %>)" class="btn btn-link card-link">Update Contact</a>
+                    <form action="/contact/delete/<%= entry.id %>?_method=delete" method="POST"><button type="submit" class="btn btn-link ml-3">Delete Contact</button> </form>
 
                 </div>
             </div>
