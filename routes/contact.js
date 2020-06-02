@@ -29,70 +29,47 @@ router.get('/', (req, res) => {
 
 router.post('/register', (req, res) => {
     const { name, email, phone, address } = req.body;
-    db.Contact.create({
-        name,
-        email,
-        phone,
-        address,
-    }).then((result) => {
-        res.redirect('/contact');
-    });
+    db.User.findByPk(req.session.user.id)
+        .then((User) => {
+            User.createContact({
+                name,
+                email,
+                phone,
+                address,
+            })
+        }).then((result) => {
+            res.redirect('/contact');
+        });
 });
 
-// router.put('/update', (req, res) => {
-//     const { name, email, phone, address } = req.body;
-//     db.Contact.update({
-//         name,
-//         email,
-//         phone,
-//         address,
-//     }).then((result) => {
-//         res.redirect('/contact');
-//     });
-// });
-
-
-// router.post('/update', (req, res) => {
-//     const { name, email, phone, address } = req.body;
-//     db.Contact.update({
-//         where: { name: name },
-//         name,
-//         email,
-//         phone,
-//         address,
-//     }).then((result) => {
-//         res.redirect('/contact');
-//     });
-// });
-
-// router.put('/contact/update/:contact_id', (req, res) => {
-//     db.Contact.findByPk(req.params.contact_id)
-//         .then((contact) => {
-//             return contact.updateContact({
-//                 name: req.body.name,
-//                 email: req.body.email,
-//                 phone: req.body.phone,
-//                 address: req.body.address,
-//             });
-//         })
-//         .then((result) => {
-//             res.redirect('/contact');
-//         });
-// });
-
-
-router.put('/update/:id', (req,res) => {    //this will update everything except name. unable to access contact_id/id
+router.put('/update/:id', (req, res) => {    //this will update everything except name. unable to access contact_id/id
     db.Contact.update({
         name: req.body.name,
         email: req.body.email,
         phone: req.body.phone,
         address: req.body.address,
 
-    }, { where: {id: req.params.id}}, 
+    }, { where: { id: req.params.id } },
     ).then((result) => {
         console.log(result)
         res.redirect('/contact');
     });
+});
+
+router.delete('/delete/:id', (req, res) => {
+    db.Contact.destroy({ where : { id: req.params.id}})
+    .then((results) => {
+            res.redirect('/contact');
+        })
+        .then(rowsDeleted => {
+            if (rowsDeleted === 1) {
+                console.log('Deleted successfully');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+        
 });
 
 

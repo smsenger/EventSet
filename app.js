@@ -53,7 +53,7 @@ store.sync();
 // link routes to app
 app.use('/users', usersRouter);
 app.use(checkAuthentication); 
-app.use(indexRouter);
+app.use('/', indexRouter);
 // app.use('/route') use this to run checkAuthentication for every route
 //below above checkAuthentication function call
 app.use('/contact', contactsRouter);

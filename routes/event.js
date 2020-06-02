@@ -44,7 +44,21 @@ router.put('/update/:id', (req, res) => {
     });
 });
 
-
+router.delete('/delete/:id', (req, res) => {
+    db.Event.destroy({ where : { id: req.params.id}})
+    .then((results) => {
+            res.redirect('/event');
+        })
+        .then(rowsDeleted => {
+            if (rowsDeleted === 1) {
+                console.log('Deleted successfully');
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+        
+  });
 
 
 module.exports = router;
