@@ -9,8 +9,10 @@
     <div class="card" id="event-form1" style="width: 18rem;">
         <div class="card-body">
             <form action="/event/create" method="POST">
+                <labe>Type</labe>
                 <h5 class="card-title"><input class="event-type" type="text" id="type" name="type" /></h5>
-                <h5><input class="event-date" type="text" id="date" name="date" placeholder="YYYY-MM-DD" required />
+                <label>Date and Time</label>
+                <h5><input class="event-date" type="text" id="date" name="date" placeholder="MM-DD-YYYY" required />
                 </h5>
                 <h5><select class="event-date" id="contact" name="contact">
                     <option disabled selected value="">Choose a contact</option>
@@ -44,8 +46,11 @@
                     <%}%>
                     <h6 class="card-subtitle mb-2 text-muted"><%= entry.dateFormatted %></h6>
                     <h6 class="card-subtitle mb-2 text-muted"><%= entry.timeFormatted %></h6>
-                    <button type="submit" onClick="showEvent(<%= index %>)" class="card-link btn btn-link" id="event-button3">Update Event</a>
-                    <form action="event/delete/<%= entry.id %>?_method=delete" method="POST"><button type="submit" class="btn btn-link ml-3">Delete Event</button> </form>
+                    <div class="d-flex">
+                        <button onClick="showEvent(<%= index %>)" class="card-link btn btn-link" id="event-button3">Update Event</button>
+                        <form action="event/delete/<%= entry.id %>?_method=delete" method="POST"><button type="submit" class="btn btn-link ml-3">Delete Event</button></form>
+
+                    </div>
                 </div>
             </div>
             <div class="card hidden card-row" id="event-form<%= index %>" style="width: 18rem;">
@@ -58,7 +63,7 @@
                         <h6 class="card-subtitle mb-2 text-muted"><input class="update-event" type="time" id="time"
                                 name="time" value="<%= entry.timeFieldValue %>" /></h6>
                         <div class="">
-                            <button type="submit" class="btn-link btn btn-link>Update Event</button>
+                            <button type="submit" class="btn-link btn btn-link">Update Event</button>
                         </div>
                     </form>
                 </div>

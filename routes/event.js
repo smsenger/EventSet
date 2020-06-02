@@ -85,7 +85,6 @@ router.delete('/delete/:id', (req, res) => {
         })
         .then(rowsDeleted => {
             if (rowsDeleted === 1) {
-                console.log('Deleted successfully');
             }
         })
         .catch(err => {
