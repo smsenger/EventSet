@@ -29,3 +29,7 @@ function showUser() {
   $(`#user-form`).toggle();
   $(`#user-card`).toggle();
 };
+
+$(document).ready(function(){
+  $("#myModal").modal('show');
+});

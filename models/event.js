@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         if (day < 10) {
           day = '0' + day;
         }
-        return `${year}-${month}-${day}`;
+        return `${month}-${day}-${year}`;
       }
     },
     timeFormatted : {
@@ -53,7 +53,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Event.associate = function(models) {
-    Event.belongsTo(models.Contact, {foreignKey: 'Contact_Id'});
+    Event.belongsTo(models.Contact, {foreignKey: {name: 'Contact_Id', allowNull: true}});
+    Event.belongsTo(models.User, {foreignKey: 'User_Id'});
   };
   return Event;
 };

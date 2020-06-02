@@ -75,16 +75,6 @@ ul {
     margin-top: 10px;
 }
 
-button[id=formButton2] {
-    color: #17a3bf;
-    font-family: arial, sans-serif;
-}
-
-button[id=formButton2]:hover {
-    color: #17a3bf;
-    text-decoration: underline;
-}
-
 a, 
 .btn-link {
     background: none!important;
