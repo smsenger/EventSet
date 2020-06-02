@@ -1,6 +1,5 @@
 .first-link {
     margin-left: 20px;
-    margin-right: 30px;
     text-decoration: underline;
 }
 
@@ -9,6 +8,12 @@
 }
 
 .second-link {
+    margin-left: 20px;
+    text-decoration: underline;
+}
+
+.third-link {
+    margin-left: 20px;
     text-decoration: underline;
 }
 
@@ -18,7 +23,7 @@
 
 .gradient {
     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,0.4458158263305322) 0%, rgba(9,84,121,0.5886729691876751) 35%, rgba(23,163,191,0.3617822128851541) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,0.4458158263305322) 0%, rgba(9,84,121,0.5886729691876751) 35%, rgba(23,163,191,0.3617822128851541) 100%);
 }
 
 .h1 {
@@ -70,6 +75,16 @@ ul {
     margin-top: 10px;
 }
 
+button[id=formButton2] {
+    color: #17a3bf;
+    font-family: arial, sans-serif;
+}
+
+button[id=formButton2]:hover {
+    color: #17a3bf;
+    text-decoration: underline;
+}
+
 a, 
 .btn-link {
     background: none!important;
@@ -83,15 +98,10 @@ a,
 }
 
 #card-form1, 
-#card-form2 {
+#event-form1 {
     display:none;
 }
 
 .hidden {
     display: none;
-}
-
-.columns {
-    display: flex;
-    flex-direction: column;
 }

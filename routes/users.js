@@ -12,13 +12,20 @@ function checkAuthentication(req, res, next) {
   }
 }
 
-
-
 router.get('/', (req, res) => {
     res.render('users', {
       title: 'Users | Home',
     });
 })
+
+// router.get('/', (req, res) => {
+//     db.User.findAll().then((results) => {
+//         res.render('user', {
+//             title: 'Users',
+//             results: results,
+//         });
+//     })
+// });
 
 router.post('/register', (req, res) => {
   const { username, email, password } = req.body;
@@ -52,9 +59,20 @@ router.post('/login', (req, res) => {
   });
 });
 
+// router.put('/user/:id', (req,res) => {    //this will update everything except name. unable to access contact_id/id
+//     db.User.update({
+//         name: req.body.name,
+//         email: req.body.email,
+//     }, { where: {id: req.params.id}}, 
+//     ).then((result) => {
+//         console.log(result)
+//         res.redirect('/');
+//     });
+// });
+
 router.get('/logout', (req, res) => {
   req.session.destroy();
-  res.redirect('/');
+  res.redirect('/users');
 })
 
 
