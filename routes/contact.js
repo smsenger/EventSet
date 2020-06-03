@@ -17,7 +17,6 @@ const methodOverride = require('method-override');
 router.use(methodOverride('_method'));
 
 
-
 router.get('/', (req, res) => {
     db.Contact.findAll().then((results) => {
         res.render('contact', {
