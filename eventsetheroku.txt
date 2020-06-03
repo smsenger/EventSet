@@ -1,0 +1,5 @@
+user=pvfrfujyvqkxiy
+password=6ec0af43eccb99ed51a5abe0d22af64240bf08c9082cae4f2fe1a6d223217648
+host=ec2-54-86-170-8.compute-1.amazonaws.com
+port=5432
+database=d1f7teqf7l1tef

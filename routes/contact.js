@@ -18,7 +18,11 @@ router.use(methodOverride('_method'));
 
 
 router.get('/', (req, res) => {
-    db.Contact.findAll().then((results) => {
+    db.Contact.findAll({
+        where: {
+            'User_Id': req.session.user.id
+        }
+    }).then((results) => {
         res.render('contact', {
             title: 'Contacts',
             results: results,
