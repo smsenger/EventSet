@@ -35,7 +35,7 @@ This application was built using bcrypt for password encryption and the postgres
 
 The following installations must take place to successfully after cloning from the github repository to run this program on a local computer: npm install, connect session-sequelize, sequelize -cli, ejs-lint (for error reporting), and nodemon.
 
-## Potential Improvements
+## Potential Updates
 
 The following features would enhance this application:
 
