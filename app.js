@@ -21,6 +21,7 @@ const fs = require('fs');
 const hash = process.argv[2];
 const password = process.argv[3];
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -67,7 +68,6 @@ function checkAuthentication(req, res, next) {
       next();
   } else {
       res.redirect('/users');
-      //format here = res.render('/pagefilename.ejs')
   };
 };
 

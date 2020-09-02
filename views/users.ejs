@@ -1,52 +1,79 @@
-<% include partials/pageopen.ejs %>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="jumbotron gradient" style="height: 200vh; border-radius: 0em;">
-    <h1 class="display-4 h1">Welcome to EventSet!</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css" type="text/css" />
+</head>
 
-    <p><i>Where your events are all set.</i></p>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">EventSet</a>
+    </nav>
 
-    <div class="row d-flex position-row card-row1">
-        <div class="card card1" style="width: 18rem;">
-            <div class="card-body">
-                <form action='/users/register' method='post'>
-                    <h2>Register</h2>
-                    <div>
-                        <h6>Username</h6>
-                        <h6 class="card-title"><input class="user-name" type="text" id="name" name="username" /></h6>
-                    </div>
-                    <div>
-                        <h6>Email</h6>
-                        <h6 class="card-subtitle mb-2 text-muted"><input class="user-email" type="email" id="email"
-                                name="email" /></h6>
-                    </div>
-                    <div>
-                        <h6>Password</h6>
-                        <h6 class="card-subtitle mb-2 text-muted"><input class="user-password" type="password"
-                                id="password" name="password" /></h6>
-                    </div>
-                    <button type="submit">Register</button>
-                </form>
+    <div class="jumbotron gradient" style="height: 200vh; border-radius: 0em;">
+        <h1 class="display-4 h1">Welcome to EventSet!</h1>
+
+        <h5><i>Where your events are all set.</i></h5>
+
+
+        <div class="row d-flex position-row card-row1">
+            <div class="card card1" style="width: 18rem;">
+                <div class="card-body">
+                    <form action='/users/register' method='post'>
+                        <h2>Register</h2>
+                        <div>
+                            <h6>Username</h6>
+                            <h6 class="card-title"><input class="user-name" type="text" id="name" name="username"
+                                    pattern="^[A-Za-z0-9_.]+$"
+                                    oninvalid="this.setCustomValidity('Please enter a username')" type="username"
+                                    oninput="this.setCustomValidity('')" required />
+                            </h6>
+                        </div>
+                        <div>
+                            <h6>Email</h6>
+                            <h6 class="card-subtitle mb-2 text-muted"><input class="user-email" type="email" id="email"
+                                    name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                    oninvalid="this.setCustomValidity('Please follow this format: username@email.com')"
+                                    type="email" oninput="this.setCustomValidity('')" required /></h6>
+                        </div>
+                        <div>
+                            <h6>Password</h6>
+                            <h6 class="card-subtitle mb-2 text-muted"><input class="user-password" type="password"
+                                    id="password" name="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                                    oninvalid="this.setCustomValidity('Password must contain a minimum of eight characters, with at least one letter and one number')"
+                                    oninput="this.setCustomValidity('')" required />
+                            </h6>
+                        </div>
+                        <button type="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <form action='/users/login' method='post'>
+                        <h2>Login</h2>
+                        <div>
+                            <h6>Username</h6>
+                            <h6 class="card-title"><input class="user-name" type="text" id="name" name="username"
+                                    required />
+                            </h6>
+                        </div>
+                        <div>
+                            <h6>Password</h6>
+                            <h6 class="card-subtitle mb-2 text-muted"><input class="user-password" type="password"
+                                    id="password" name="password" required /></h6>
+                        </div>
+                        <button type="submit">Sign in</button>
+                    </form>
+                </div>
             </div>
         </div>
-
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <form action='/users/login' method='post'>
-                    <h2>Login</h2>
-                    <div>
-                        <h6>Username</h6>
-                        <h6 class="card-title"><input class="user-name" type="text" id="name" name="username" /></h6>
-                    </div>
-                    <div>
-                        <h6>Password</h6>
-                        <h6 class="card-subtitle mb-2 text-muted"><input class="user-password" type="password"
-                                id="password" name="password" /></h6>
-                    </div>
-                    <button type="submit">Sign in</button>
-                </form>
-            </div>
-        </div>
+        <hr class="my-4" id="jumbo-line">
     </div>
-    <hr class="my-4" id="jumbo-line">
-</div>
-<% include partials/pageclose.ejs %>
+    <% include partials/pageclose.ejs %>
